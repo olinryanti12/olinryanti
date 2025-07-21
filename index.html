@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desain Rumah Interaktif</title>
+    <style>
+        body {
+            margin: 0;
+            background: linear-gradient(skyblue 70%, green 30%);
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1 {
+            margin-top: 20px;
+            color: #333;
+        }
+        .kontrol {
+            background: #fff;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .kontrol label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+        .kontrol input {
+            width: 100px;
+            height: 30px;
+            border: none;
+            cursor: pointer;
+        }
+        .scene {
+            position: relative;
+            width: 800px;
+            height: 500px;
+            margin-top: 20px;
+        }
+        .tanah {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100px;
+            background: #4CAF50;
+        }
+        .rumah {
+            position: absolute;
+            bottom: 100px;
+            left: 200px;
+            width: 400px;
+            height: 250px;
+        }
+        .dinding {
+            width: 400px;
+            height: 200px;
+            background: #ffe082;
+            position: absolute;
+            bottom: 0;
+            border: 3px solid #333;
+        }
+        .atap {
+            width: 0;
+            height: 0;
+            border-left: 220px solid transparent;
+            border-right: 220px solid transparent;
+            border-bottom: 150px solid brown;
+            position: absolute;
+            top: -150px;
+            left: -20px;
+        }
+        .pintu {
+            width: 80px;
+            height: 120px;
+            background: #6D4C41;
+            position: absolute;
+            bottom: 0;
+            left: 160px;
+            border: 2px solid #000;
+            border-radius: 5px;
+        }
+        .jendela {
+            width: 70px;
+            height: 70px;
+            background: #81D4FA;
+            border: 2px solid #000;
+            position: absolute;
+            top: 50px;
+        }
+        .jendela.kiri { left: 40px; }
+        .jendela.kanan { right: 40px; }
+    </style>
+</head>
+<body>
+    <h1>Desain Rumah Interaktif</h1>
+
+    <!-- Kontrol Warna -->
+    <div class="kontrol">
+        <label for="warnaDinding">Warna Dinding:</label>
+        <input type="color" id="warnaDinding" value="#ffe082">
+
+        <label for="warnaAtap">Warna Atap:</label>
+        <input type="color" id="warnaAtap" value="#8D6E63">
+
+        <label for="warnaPintu">Warna Pintu:</label>
+        <input type="color" id="warnaPintu" value="#6D4C41">
+
+        <label for="warnaJendela">Warna Jendela:</label>
+        <input type="color" id="warnaJendela" value="#81D4FA">
+    </div>
+
+    <!-- Scene Rumah -->
+    <div class="scene">
+        <div class="tanah"></div>
+        <div class="rumah">
+            <div class="atap" id="atap"></div>
+            <div class="dinding" id="dinding"></div>
+            <div class="jendela kiri" id="jendelaKiri"></div>
+            <div class="jendela kanan" id="jendelaKanan"></div>
+            <div class="pintu" id="pintu"></div>
+        </div>
+    </div>
+
+    <script>
+        const dinding = document.getElementById("dinding");
+        const atap = document.getElementById("atap");
+        const pintu = document.getElementById("pintu");
+        const jendelaKiri = document.getElementById("jendelaKiri");
+        const jendelaKanan = document.getElementById("jendelaKanan");
+
+        document.getElementById("warnaDinding").addEventListener("input", (e) => {
+            dinding.style.background = e.target.value;
+        });
+
+        document.getElementById("warnaAtap").addEventListener("input", (e) => {
+            atap.style.borderBottomColor = e.target.value;
+        });
+
+        document.getElementById("warnaPintu").addEventListener("input", (e) => {
+            pintu.style.background = e.target.value;
+        });
+
+        document.getElementById("warnaJendela").addEventListener("input", (e) => {
+            jendelaKiri.style.background = e.target.value;
+            jendelaKanan.style.background = e.target.value;
+        });
+    </script>
+</body>
+</html>
